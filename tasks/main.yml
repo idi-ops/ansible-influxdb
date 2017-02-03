@@ -1,2 +1,2 @@
 ---
-# tasks file for ansible-role-influxdb
+- { include: install.yml, tags: ["install"] }

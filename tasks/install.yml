@@ -1,0 +1,20 @@
+---
+- name: Enable Yum repository
+  yum_repository:
+    name: influxdb
+    description: Influxdb upstream yum repo
+    baseurl: "{{ influxdb_repo }}"
+    gpgcheck: yes
+    gpgkey: "{{ influxdb_repo_key }}"
+
+#- name: Import RPM key
+#  rpm_key:
+#    key: "{{ influxdb_repo_key }}"
+#    state: present
+
+#- name: Install package
+#  package:
+#    name: influxdb
+#    state: latest
+#  notify:
+#    - restart influxdb

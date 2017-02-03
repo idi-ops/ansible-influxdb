@@ -1,2 +1,5 @@
 ---
-# vars file for ansible-role-influxdb
+
+#influxdb_repo: https://repos.influxdata.com/centos/7/x86_64/stable/
+influxdb_repo: https://repos.influxdata.com/centos/$releasever/$basearch/stable/
+influxdb_repo_key: https://repos.influxdata.com/influxdb.key
