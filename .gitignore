@@ -2,3 +2,4 @@ ansible.cfg
 .molecule
 *.pyc
 .*.sw?
+venv
