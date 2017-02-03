@@ -1,1 +1,4 @@
+ansible.cfg
+.molecule
+*.pyc
 .*.sw?
