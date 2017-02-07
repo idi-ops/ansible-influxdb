@@ -7,10 +7,10 @@
     gpgcheck: yes
     gpgkey: "{{ influxdb_repo_key }}"
 
-#- name: Import RPM key
-#  rpm_key:
-#    key: "{{ influxdb_repo_key }}"
-#    state: present
+- name: Import RPM key
+  rpm_key:
+    key: "{{ influxdb_repo_key }}"
+    state: present
 
 #- name: Install package
 #  package:

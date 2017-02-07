@@ -20,5 +20,14 @@ def Repository_exists(Command):
     return f
 
 
-def test_epel_repo_is_installed(Repository_exists):
+def test_influxdb_repo_is_installed(Repository_exists):
     assert Repository_exists("Influxdb upstream yum repo")
+
+
+def test_infludb_repo_key_is_installed_(Command):
+    # Adapted from https://wiki.centos.org/TipsAndTricks/YumAndRPM:
+    # Show all installed GPG keys
+    # Thanks to forum user babo for this one-liner to show all GPG keys along
+    # with the corresponding repo information.
+    rpm_keys = Command.check_output("rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'")
+    assert "influxdb" in rpm_keys
