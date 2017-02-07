@@ -8,6 +8,13 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 # Adapted from
 # http://www.axelspringerideas.de/blog/index.php/2016/08/16/continuously-delivering-infrastructure-part-1-ansible-molecule-and-testinfra/
+#
+# This is a little fancy for my taste. pytest fixtures are cool -- they're how
+# the testinfra File and Package helpers are implemented, so I think the author
+# was aiming for consistency -- but I'm not sure this one improves readability
+# or maintainability. However, 1) I didn't have to write it and 2) I thought it
+# might be instructive to show this approach. Contrast with the more direct
+# approach I use in test_influxdb_repo_key_is_installed().
 @fixture()
 def Repository_exists(Command):
     """
@@ -24,7 +31,7 @@ def test_influxdb_repo_is_installed(Repository_exists):
     assert Repository_exists("Influxdb upstream yum repo")
 
 
-def test_infludb_repo_key_is_installed_(Command):
+def test_influxdb_repo_key_is_installed(Command):
     # Adapted from https://wiki.centos.org/TipsAndTricks/YumAndRPM:
     # Show all installed GPG keys
     # Thanks to forum user babo for this one-liner to show all GPG keys along
