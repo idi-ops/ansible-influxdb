@@ -36,3 +36,8 @@ def test_infludb_repo_key_is_installed_(Command):
 def test_influxdb_package_is_installed(Package):
     pkg = Package("influxdb")
     assert pkg.is_installed
+
+
+def test_influxdb_config_has_collectd_enabled(File):
+    config = File("/etc/influxdb/influxdb.conf").content_string
+    assert "[[collectd]]\n  enabled = true" in config
