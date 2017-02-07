@@ -12,9 +12,9 @@
     key: "{{ influxdb_repo_key }}"
     state: present
 
-#- name: Install package
-#  package:
-#    name: influxdb
-#    state: latest
-#  notify:
-#    - restart influxdb
+- name: Install package
+  package:
+    name: influxdb-1.2.0
+    state: present
+  notify:
+    - restart influxdb

@@ -31,3 +31,8 @@ def test_infludb_repo_key_is_installed_(Command):
     # with the corresponding repo information.
     rpm_keys = Command.check_output("rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'")
     assert "influxdb" in rpm_keys
+
+
+def test_influxdb_package_is_installed(Package):
+    pkg = Package("influxdb")
+    assert pkg.is_installed
