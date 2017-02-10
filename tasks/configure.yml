@@ -5,3 +5,5 @@
     marker: "  # {mark} ANSIBLE MANAGED BLOCK"
     insertafter: ^\[\[collectd\]\]
     block: "  enabled = true"
+  notify:
+    - restart influxdb
