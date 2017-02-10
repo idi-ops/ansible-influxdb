@@ -13,6 +13,8 @@ docker:
         - group1
 verifier:
   name: testinfra
+  options:
+    ignore: venv
 
 molecule:
   ignore_paths:

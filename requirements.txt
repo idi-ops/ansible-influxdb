@@ -1,4 +1,4 @@
 docker-py
 flake8
-molecule
+molecule == 1.19
 
