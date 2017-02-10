@@ -6,7 +6,7 @@ driver:
 docker:
   containers:
     - name: ansible-role-influxdb
-      image: centos/systemd
+      image: centos/systemd  # centos/systemd doesn't provide any other tags :(
       image_version: latest
       privileged: True
       ansible_groups:
