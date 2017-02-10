@@ -47,4 +47,4 @@ def test_influxdb_package_is_installed(Package):
 
 def test_influxdb_config_has_collectd_enabled(File):
     config = File("/etc/influxdb/influxdb.conf").content_string
-    assert "[[collectd]]\n  enabled = true" in config
+    assert "# BEGIN ANSIBLE MANAGED BLOCK" in config
