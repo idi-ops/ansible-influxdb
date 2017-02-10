@@ -48,3 +48,8 @@ def test_influxdb_package_is_installed(Package):
 def test_influxdb_config_has_collectd_enabled(File):
     config = File("/etc/influxdb/influxdb.conf").content_string
     assert "# BEGIN ANSIBLE MANAGED BLOCK" in config
+
+
+def test_influxdb_has_collectd_database(Command):
+    databases = Command.check_output("influx -execute 'show databases'")
+    assert "collectd" in databases
