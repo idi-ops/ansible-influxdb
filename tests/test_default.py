@@ -45,6 +45,19 @@ def test_influxdb_package_is_installed(Package):
     assert pkg.is_installed
 
 
+def test_which_package_is_installed(Package):
+    pkg = Package("which")
+    assert pkg.is_installed
+
+
+# Influxdb will install a sysvinit script if it can't find systemd. Since we
+# want it to find systemd, insist that the legacy sysvinit script is not
+# installed.
+def test_etc_initd_influxdb_is_not_installed(File):
+    sysvinit = File("/etc/init.d/influxdb")
+    assert not sysvinit.exists
+
+
 def test_influxdb_config_has_collectd_enabled(File):
     config = File("/etc/influxdb/influxdb.conf").content_string
     assert "# BEGIN ANSIBLE MANAGED BLOCK" in config
