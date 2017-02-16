@@ -12,20 +12,11 @@
     key: "{{ influxdb_repo_key }}"
     state: present
 
-# The influxdb package uses `which systemctl` to decide if systemd is
-# installed on the target machine. That test fails in the upstream centos
-# Docker image because while systemctl(1) is installed, which(1) is not!
-# Hence, we install which(1) so that check will pick the right init method.
-- name: Install which package
+- name: Install packages
   package:
-    name: which-2.20-7.el7
+    name: "{{ item }}"
     state: present
-  notify:
-    - restart influxdb
-
-- name: Install influxdb package
-  package:
-    name: "influxdb-{{ influxdb_package_version }}"
-    state: present
+  with_items:
+  - "{{ influxdb_packages }}"
   notify:
     - restart influxdb
