@@ -18,14 +18,14 @@
 # Hence, we install which(1) so that check will pick the right init method.
 - name: Install which package
   package:
-    name: which
+    name: which-2.20-7.el7
     state: present
   notify:
     - restart influxdb
 
 - name: Install influxdb package
   package:
-    name: influxdb-1.2.0
+    name: "influxdb-{{ influxdb_package_version }}"
     state: present
   notify:
     - restart influxdb
