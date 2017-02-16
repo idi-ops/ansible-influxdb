@@ -8,7 +8,6 @@ vagrant:
   platforms:
     - name: centos/7
       box: centos/7
-      box_url: https://vagrantcloud.com/centos/7
   providers:
     - name: virtualbox
       type: virtualbox
