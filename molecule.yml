@@ -1,20 +1,26 @@
 ---
 dependency:
   name: galaxy
+  requirements_file: requirements.yml
 driver:
-  name: docker
-docker:
-  containers:
-    - name: ansible-role-influxdb
-      image: centos/systemd  # centos/systemd doesn't provide any other tags :(
-      image_version: latest
-      privileged: True
+  name: vagrant
+vagrant:
+  platforms:
+    - name: centos/7
+      box: centos/7
+      box_url: https://vagrantcloud.com/centos/7
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+        memory: 256
+        cpus: 1
+  instances:
+    - name: ansible-collectd
       ansible_groups:
         - group1
 verifier:
   name: testinfra
-  options:
-    ignore: venv
 
 molecule:
   ignore_paths:
