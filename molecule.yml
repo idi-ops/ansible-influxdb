@@ -15,7 +15,7 @@ vagrant:
         memory: 256
         cpus: 1
   instances:
-    - name: ansible-collectd
+    - name: ansible-role-influxdb
       ansible_groups:
         - group1
 verifier:
