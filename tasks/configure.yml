@@ -1,0 +1,9 @@
+---
+- name: Enable collectd in package-provided config
+  blockinfile:
+    dest: "{{ influxdb_config_file }}"
+    marker: "  # {mark} ANSIBLE MANAGED BLOCK"
+    insertafter: ^\[\[collectd\]\]
+    block: "  enabled = true"
+  notify:
+    - restart influxdb

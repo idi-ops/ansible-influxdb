@@ -1,2 +1,15 @@
 ---
-# defaults file for ansible-role-influxdb
+influxdb_config_file: /etc/influxdb/influxdb.conf
+
+influxdb_package_version: 1.2.0
+influxdb_packages:
+- "influxdb-{{ influxdb_package_version }}"
+# The influxdb package uses `which systemctl` to decide if systemd is
+# installed on the target machine. That test fails in the upstream centos
+# Docker image because while systemctl(1) is installed, which(1) is not!
+# Hence, we install which(1) so that check will pick the right init method.
+- which-2.20-7.el7
+
+# e.g. /centos/7/x86_64/stable/
+influxdb_repo: https://repos.influxdata.com/centos/$releasever/$basearch/stable/
+influxdb_repo_key: https://repos.influxdata.com/influxdb.key

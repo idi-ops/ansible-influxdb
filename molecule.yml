@@ -1,14 +1,26 @@
 ---
 dependency:
   name: galaxy
+  requirements_file: requirements.yml
 driver:
-  name: docker
-docker:
-  containers:
+  name: vagrant
+vagrant:
+  platforms:
+    - name: centos/7
+      box: centos/7
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+        memory: 256
+        cpus: 1
+  instances:
     - name: ansible-role-influxdb
-      image: ubuntu
-      image_version: latest
       ansible_groups:
         - group1
 verifier:
   name: testinfra
+
+molecule:
+  ignore_paths:
+    - venv

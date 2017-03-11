@@ -1,4 +1,7 @@
-ansible.cfg
-.molecule
 *.pyc
 .*.sw?
+.cache
+.molecule
+.vagrant
+pytestdebug.log
+venv
