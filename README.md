@@ -38,7 +38,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - ansible-role-influxdb
+         - ansible-influxdb
            influxdb_package_version: 1.2.0
 
 Tests
