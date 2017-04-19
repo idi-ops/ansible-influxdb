@@ -15,8 +15,10 @@
 - name: Install packages
   package:
     name: "{{ item }}"
-    state: present
+    state: latest
   with_items:
   - "{{ influxdb_packages }}"
   notify:
     - restart influxdb
+  tags:
+    - skip_ansible_lint

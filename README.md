@@ -16,11 +16,9 @@ Role Variables
 ```
 influxdb_config_file: /etc/influxdb/influxdb.conf
 
-influxdb_package_version: 1.2.0
-
 influxdb_packages:
-- "influxdb-{{ influxdb_package_version }}"
-- which-2.20-7.el7
+- influxdb
+- which
 
 # e.g. /centos/7/x86_64/stable/
 influxdb_repo: https://repos.influxdata.com/centos/$releasever/$basearch/stable/
