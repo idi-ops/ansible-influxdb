@@ -1,3 +1,5 @@
+DEPRECATED: this role is no longer used by the organization.
+
 Ansible role: influxdb
 =========
 
